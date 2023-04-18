@@ -1,0 +1,502 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static subscribers_tags %}
+
+{% block title %} {% if self.custom_title %}{{ self.custom_title }}{% else %}{{self.title}}{% endif %} {% endblock title %}
+
+{% block extra_css %}
+
+
+    <meta property="og:url" content="{{ request.get_host }}{% pageurl page %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% if self.custom_title %}{{ self.custom_title }}{% else %}{{self.title}}{% endif %}" />
+    <meta property="og:description" content="{{ self.search_description }}" />
+    <meta property="og:image" content="https://at-heroku-s3.s3.amazonaws.com/images/hsr-share.original.png" />
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@AlexandriaThib">
+    <meta name="twitter:title" content="{% if self.custom_title %}{{ self.custom_title }}{% else %}{{self.title}}{% endif %}">
+    <meta name="twitter:description" content="{{ self.search_description }}">
+    <meta name="twitter:image" content="https://at-heroku-s3.s3.amazonaws.com/images/hsr-share.original.png">
+
+<style>
+    .sen-rad .section-bg {
+        background-image: url(https://at-heroku-s3.s3.amazonaws.com/images/lexi-fullscreen-purp.original.jpg);
+    }
+</style>
+{% endblock %} 
+
+{% block content %}
+
+<script>
+    fbq('track', 'ViewContent');
+</script>
+<section class="sen-rad">
+    <div class="section-bg"></div>
+    <div class="section-overlay"></div>
+    <div class="section-content offer-title text-center text-white">
+        <div class="nav-spacer"></div>
+        <h5 class="mb-2">WELCOME TO</h5>
+        <h1 class="mb-3">Becoming a Highly Sensitive Radical</h1>
+        <h5 class="m-3">Use the strength of sensitivity to radically advocate for yourself and for others.</h5>
+        <h5 class="m-0"><em>Join and connect with other HSPs from all over the world.</em></h5>
+        <button type="button" class="btn btn-lg btn-secondary btn-shadow btn-bounce mt-4 scroll-to-pay">Reserve Now</button>
+        <p class="offer-note"><em>Course begins <strong>June 15th, 2022</strong>. <br> Spots are limited, reserve yours today!</em></p>
+    </div>
+</section>
+
+<section class="sp-section">
+    <div class="container mobile-margin py-0">
+        <div class="row">
+            <div class="col-12 text-center message-from mb-5">
+                <h5>A Message From</h5>
+                <h2>Alexandria</h2>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="">
+                    <script src="https://fast.wistia.com/embed/medias/6hpd2fspmw.jsonp" async></script>
+                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                            <div class="wistia_embed wistia_async_6hpd2fspmw videoFoam=true" style="height:100%;position:relative;width:100%">
+                                <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/6hpd2fspmw/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pl-lg-5">
+                <div class="text-wrapper mt-lg-0 mt-4">
+                    <p>If you're looking to radicalize the world for the betterment of yourself and others, start by radicalizing yourself and your world; become a Highly Sensitive Radical and learn how to use your innate sensitivity to audaciously advocate
+                        for yourself!</p>
+                    <p>With effervescence and honesty, these three modules will provide you the self-understanding and guidance needed to understand and utilize your personal agency and make a real difference in your reality, in that of others, and in
+                        turn, in the world you want to live in.</p>
+                    <p>You will engage in the internal and external work needed to speak and act with integrity &amp; conviction instead of avoiding confrontation or dismissing our true feelings for the comfort and convenience of others.</p>
+                    <p>The point is not to overstimulate ourselves or become a martyr, but to use our sharp detection, keen discernment, and acute feelings to say what's not being said and do what's not being done in the face of bullies and bullshit.
+                        Let's go!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="breakdown position-relative">
+    <div class="section-overlay"></div>
+    <div class="container mobile-margin sp-section">
+        <div class="row">
+            <div class="col-md-8 text-white mt-md-0 mt-5">
+                <h4>The Breakdown</h4>
+                <h2 class="mt-3">This course includes:</h2>
+                <div class="number-group d-flex">
+                    <div class="number-icon">
+                        <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                            <i class="fas fa-film"></i>
+                        </div>
+                    </div>
+                    <div class="number-text d-flex align-items-center">
+                        <p class="mb-0">Three video modules led by Alexandria, including a worksheet walking you through self-advocacy and external work, surrounded by a community of other highly sensitive persons (HSPs).</p>
+                    </div>
+                </div>
+                <div class="number-group d-flex">
+                    <div class="number-icon">
+                        <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                    </div>
+                    <div class="number-text d-flex align-items-center">
+                        <p class="mb-0">A weekly LIVE Q&amp;A for a month, led by Alexandria. (Recorded version will be emailed next day for those unable to attend live).</p>
+                    </div>
+                </div>
+                <div class="number-group d-flex">
+                    <div class="number-icon">
+                        <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                    </div>
+                    <div class="number-text d-flex align-items-center">
+                        <p class="mb-0">Access to the course for 90 days to go at your own pace.</p>
+                    </div>
+                </div>
+                <div class="number-group d-flex">
+                    <div class="number-icon">
+                        <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="number-text d-flex align-items-center">
+                        <p class="mb-0">Connection with others HSPs from around the world.</p>
+                    </div>
+                </div>
+                <p class="price mb-0"><strong>Price:</strong> <s>$129</s> <strong class="text-secondary">$97</strong></p>
+                <p class="price-badge"><span class="badge badge-secondary">25% OFF</span></p>
+                <p>This is a special pre-order price that won't last long! After the course launches on <strong>June 15th, 2022</strong> the bundle will return to its regular price of $129. Due to the community portion of this course, spots will be limited.
+                    Reserve yours today!</p>
+                <button type="button" class="btn btn-lg btn-secondary btn-shadow btn-bounce mt-4 scroll-to-pay">Reserve Now</button>
+            </div>
+            <div class="col-md-4 order-md-first d-flex justify-content-md-end justify-content-center align-items-start">
+                <div class="bio-feat rounded bg-secondary mr-lg-5 mr-md-3 mb-5">
+                    <div class="bio-img">
+                        <img class="img-fluid rounded" src="https://at-heroku-s3.s3.amazonaws.com/images/at-sunglasses.original.jpg" alt="Image of Alexandria Thibodeaux">
+                    </div>
+                    <div class="bio-text">
+                        <p class="mb-0 text-primary"><strong>Alexandria Thibodeaux</strong></p>
+                        <p class="text-primary">The Highly Sensitive Radical&trade;</p>
+                        <p class="mb-0 text-primary"><em>Interpersonal Communication +&nbsp;Relationship Strategist</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sp-section overview">
+    <div class="container mobile-margin">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h4>Becoming a Highly Sensitive Radical</h4>
+                <h2>Course Overview</h2>
+            </div>
+            <div class="col-lg-4">
+                <a data-toggle="modal" href="#module1" role="button">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-secondary">Module 1</span>
+                            <h3 class="card-title mb-1">Revere Yourself:</h3>
+                            <h6>Learn how to deeply admire &amp; respect yourself as the foundation for self-advocating.</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">In this module, you'll be able to foster a secure sense of self-reverence™ that will embolden you to champion your gift of innate, high sensitivity and galvanize you into using your personal agency to take aligned and inspired
+                                action in asserting the reality you want for yourself.</p>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-success btn-lg view-details btn-shadow" data-toggle="modal" data-target="#module1">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- modal -->
+                <div class="modal fade" id="module1" tabindex="-1" role="dialog" aria-labelledby="module1Label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="module1Label">Module 1: Revere Yourself</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Learn how to deeply admire &amp; respect yourself as the foundation for self-advocating.</h6>
+                                <div class="lessons my-3">
+                                    <strong>Lesson 1:</strong> <em>Ditch humility</em> <br>
+                                    <strong>Lesson 2:</strong> <em>Reject imposter syndrome</em> <br>
+                                    <strong>Lesson 3:</strong> <em>Trust your discernment and your senses</em> <br>
+                                </div>
+                                <p>To revere yourself is to nurture &amp; maintain a deep admiration &amp; a deep respect for yourself. And you cannot radically advocate for and boldly declare your thoughts, feelings, experience, and reality if you don't respect
+                                    and admire the worthiness of your integrity, abilities, and quality of life.</p>
+                                <p class="mb-0">Do you have a highly sensitive nature? Do you astutely detect what others do not? Are you strongly affected by what most consider to be trivial and often perturbed by the status quo? Are you highly intuitive, deeply
+                                    empathic, and feel everything with intensity? Then you're likely an HSP, or a highly sensitive person.</p>
+                            </div>
+                            <div class="modal-footer-close d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end modal -->
+            </div>
+
+            <div class="col-lg-4">
+                <a data-toggle="modal" href="#module2" role="button">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-secondary">Module 2</span>
+                            <h3 class="card-title mb-1">Advocate for Yourself:</h3>
+                            <h6>Learn how to effectively communicate your needs, feelings, thoughts, and reality with clarity, integrity, assurance, and consistency.</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">In this module, you will learn and hone the unparalleled skills needed to initiate and navigate hard/awkward/serious conversations, facilitate confrontation and discourse, and become a boundary badass. You'll learn to verbally
+                                and physically advocate for yourself without crippling fear, guilt, or shame.</p>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-success btn-lg view-details btn-shadow" data-toggle="modal" data-target="#module2">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- modal -->
+                <div class="modal fade" id="module2" tabindex="-1" role="dialog" aria-labelledby="module2Label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="module2Label">Module 2: Advocate for Yourself</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Learn how to effectively communicate your needs, feelings, thoughts, and reality with clarity, integrity, assurance, and consistency.</h6>
+                                <div class="lessons my-3">
+                                    <strong>Lesson 1:</strong> <em>Speak your integrity</em> <br>
+                                    <strong>Lesson 2:</strong> <em>Exercise your authority</em> <br>
+                                    <strong>Lesson 3:</strong> <em>Do things your way</em> <br>
+                                    <strong>Lesson 4:</strong> <em>Be a boundary badass</em> <br>
+                                    <strong>Lesson 5:</strong> <em>Build &amp; maintain an aligned community</em> <br>
+                                </div>
+                                <p>Self-advocacy is a necessary component of effective communication. And in many societies, self-advocacy is regressively considered a radical act. It's how we protect our peace, deepen self-reverence™, and preserve our
+                                    integrity. It's how we take up space, honor our belonging, assert our voice, and declare our truths.</p>
+                            </div>
+                            <div class="modal-footer-close d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end modal -->
+            </div>
+
+            <div class="col-lg-4">
+                <a data-toggle="modal" href="#module3" role="button">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="badge badge-secondary">Module 3</span>
+                            <h3 class="card-title mb-1">Advocate for Others:</h3>
+                            <h6>Learn how to stick up for others in the face of bullies.</h6>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">In this module, learn how to radically speak and act in defense of the bullied, frightened, and ill-resourced. Learn how to effectively champion and support the voiceless, underrepresented, marginalized, and suffering.
+                                Learn how to do this in person, online, at work, within the family, within friend groups, and with your partner(s).</p>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-success btn-lg view-details btn-shadow" data-toggle="modal" data-target="#module3">
+                                    View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- modal -->
+                <div class="modal fade" id="module3" tabindex="-1" role="dialog" aria-labelledby="module3Label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="module3Label">Module 3: Advocate for Others</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h6>Learn how to stick up for others in the face of bullies.</h6>
+                                <div class="lessons my-3">
+                                    <strong>Lesson 1:</strong> <em>Be a tenacious trailblazer</em> <br>
+                                    <strong>Lesson 2:</strong> <em>Break cycles</em> <br>
+                                    <strong>Lesson 3:</strong> <em>Disrupt patterns</em> <br>
+                                    <strong>Lesson 4:</strong> <em>Start the ripple effect</em> <br>
+                                </div>
+                                <p>Effective communication is what progressively propels ourselves and the collective forward and allows us to empathetically &amp; meaningfully form aligned connection to one another; human connection creates human progression!
+                                </p>
+                            </div>
+                            <div class="modal-footer-close d-flex justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end modal -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-success">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="button" class="btn btn-lg btn-secondary btn-shadow btn-bounce scroll-to-pay">Sign Me Up!</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="sp-section instagram-love bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h3>What People Are Saying</h3>
+                <hr>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="insta-quote text-left">
+                        <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                        Working with Alexandria has helped me to move out of place of judgement of myself and get in touch with the parts of myself that need healing. She has helped me navigate where I need to work in a way that is very straight forward and catered to my specific
+                        situation. She is amazing and tapping into exactly what I need to focus on with clear instructions and is careful that it is something that feels safe for me. I love working with her, it has changed my&nbsp;life.
+                    </div>
+                    <div class="author text-center badge badge-success">
+                        Tiffany G, CA
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="insta-quote text-left">
+                        <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                        Alexandria provided me with clear and concise questions to ask myself during a time period in my life where the decision I was faced with was in a total gray area. She helped me navigate through the murky waters of my emotions to a clear decision that
+                        brought peace to my soul. Her ability to read between the lines, connect with her surroundings, and attentively listen and pay attention to detail gives her an upper hand to add much needed perspective to a number of scenarios:
+                        personal, relational, or professional. I recommend her as a coach to help you align with your inner voice of reason. She is a true delight to converse with and receive amazing feedback!
+                    </div>
+                    <div class="author text-center badge badge-success">
+                        Tiffany M, St. Louis
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="insta-quote text-left">
+                        <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                        I wanted to take the time to articulate my long-running gratitude for you. I have watched you grow and build your business, but aside from the admiration I hold for you as an ever-pursuant businesswoman, I want to focus my gratitude on the services that
+                        you provide. After our conversation, Transformation Session, I felt the need to pursue the journey that is Self-Reverence and Love for myself. You are well read and knowledgeable on the ability our minds hold to remold and
+                        re-authenticate ourselves, even after enduring trauma! I was a skeptic, I will not lie, as culturally I was taught the good ol, "Toughen up buttercup" mentality. Nevertheless, I went in with a somewhat closed mindedness and
+                        you derailed my questionability in just 30 minutes. I am amazed at the revelations that came about and you gave me a safe space to be able to reveal some great and not so great parts of myself. I think when one thinks of a
+                        coach, they assume the coach will just tell them what to do. You guide and mold our thoughts in a way that makes us stay true to ourselves and our current abilities. As a scientist I firmly believe, " Success is a science;
+                        if you have the conditions, you get the result." A quote from Oscar Wilde. I resolutely affirm that what you are providing are the conditions for our overall self- success. Thank you!
+                    </div>
+                    <div class="author text-center badge badge-success">
+                        Miryam T, El Paso
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="insta-quote text-left">
+                        <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                        As an HSP, it can be challenging and overwhelming to navigate this insensitive world; my transformation session with Alexandria was what my soul needed. I felt so seen, validated, celebrated, and empowered! I learned, healed, and feel cleared of any self-doubts
+                        I was experiencing. Thank you Alexandria for this empowering and healing session!
+                    </div>
+                    <div class="author text-center badge badge-success">
+                        Nicole J, Gurnee
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                    <div class="insta-quote text-left">
+                        <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                        <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                        I had a brief coaching session with Alexandria to help clarify a decision I am making. She was quickly able to help me see the situation more clearly and gave me effective tools to help evaluate my decision. She is very kind, warm and understanding. Alexandria
+                        is a wonderful speaker and a wise and helpful guide. I'm grateful for her clarity and support.
+                    </div>
+                    <div class="author text-center badge badge-success">
+                        Sadie K, Maui
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="pay" class="introducing cta py-5">
+    <div class="container mobile-margin">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h2 class="mt-3 text-center">Interested in making it happen for yourself?</h2>
+                <p class="text-center mb-4"><strong>Enrollment for June 15th, 2022 is now open, pre-order now for $97 and reserve your seat!</strong></p>
+                <div id="smart-button-container">
+                    <div style="text-align: center;">
+                        <div id="paypal-button-container"></div>
+                    </div>
+                </div>
+                <script src="https://www.paypal.com/sdk/js?client-id={{ self.paypal_client_id }}&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                <script>
+                    function initPayPalButton() {
+                        paypal.Buttons({
+                            style: {
+                                shape: 'rect',
+                                color: 'silver',
+                                layout: 'vertical',
+                                label: 'buynow',
+                            },
+
+                            createOrder: function(data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{
+                                        "description": "Becoming a Highly Sensitive Radical",
+                                        "amount": {
+                                            "currency_code": "USD",
+                                            "value": parseFloat("{{ self.program_price }}"),
+                                        }
+                                    }]
+                                });
+                            },
+
+                            onApprove: function(data, actions) {
+                                return fetch('/payments/capture-paypal-transaction/', {
+                                        method: 'POST',
+                                        credentials: 'same-origin',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRFToken': csrftoken,
+
+                                        },
+                                        body: JSON.stringify({
+                                            orderID: data.orderID
+                                        })
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        actions.redirect("http://{{ request.get_host }}{% url 'congrats_youre_in' %}?status=" + data.status + "&transaction_id=" + data.transaction_id);
+                                    })
+                            },
+
+                            onError: function(err) {
+                                console.log(err);
+                            }
+                        }).render('#paypal-button-container');
+                    }
+                    initPayPalButton();
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var suppressMsg = true
+</script>
+
+{% endblock %} 
+{% block extra_js %}
+
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+
+    $(document).ready(function() {
+        setTimeout(
+            function() {
+                gsap.to(window, {
+                    duration: .1,
+                    scrollTo: 1
+                });
+            }, 1000);
+    });
+
+    $(".scroll-to-pay").on("click", function () {
+        gsap.to(window, { duration: .75, scrollTo: "#pay" });
+    });
+
+</script>
+
+{% endblock %}

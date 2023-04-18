@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+{% image self.header_image original as banner %}
+<style>
+    .vip-bg-image {
+        background-image: url(https://at-heroku-s3.s3.amazonaws.com/images/al-couch.original.jpg);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<script>
+    fbq('track', 'ViewContent');
+</script>
+<section class="hero vip-landing scale-landing">
+    <div class="w-100 h-100">
+        <div class="row h-100 m-0">
+            <div class="col-md-6 vip-content">
+                <div class="d-flex min-height">
+                    <div class="m-5 w-100 text-center">
+                        <h1 class="pt-5 pt-md-0">Get More Clients</h1>
+                        <div class="sub-heading mx-md-5 mx-0">
+                            <strong>by Effectively Communicating with Your Team</strong>
+                        </div>
+                        <hr class="w-50 my-3">
+                        <div class="sub-heading time">
+                            45 minute workshop
+                        </div>
+                        <hr class="w-50 my-3">
+                        <div class="sub-heading mx-md-5 mx-0">
+                            <em>When your team excels, your business excels.</em>
+                        </div>
+                        <div class="hero-cta">
+                            <button id="investNow" class="btn btn-outline-primary btn-lg my-md-5 my-3">Invest
+                                Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 vip-bg-image" style="background-position: 50% 20%; background-size:cover"></div>
+        </div>
+    </div>
+</section>
+
+<section class="parallax parallax-half who-iam">
+    <div class="section-bg"></div>
+    <div class="section-overlay"></div>
+    <div class="section-content m-3 p-md-5 p-4">
+        <h3 class="text-center mb-4">Preview the Workshop</h3>
+        <div class="embed-wrapper">
+            <script src="https://fast.wistia.com/embed/medias/3bfjkoec1e.jsonp" async></script>
+            <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <div class="wistia_embed wistia_async_3bfjkoec1e videoFoam=true"
+                        style="height:100%;position:relative;width:100%">
+                        <div class="wistia_swatch"
+                            style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                            <img src="https://fast.wistia.com/embed/medias/3bfjkoec1e/swatch"
+                                style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt=""
+                                aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content mx-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="my-5">
+                    <h3 class="mb-3">For leaders in entrepreneurship and business ownership</h3>
+                    <p class="">Learn valuable and unique interpersonal communication skills that allow you to
+                        communicate with your team with empathy, clarity, poise, and confidence.</p>
+                    <p>Your company’s sales and overall performance shouldn’t suffer due to poor communication. I help you make sure that never happens in YOUR business.</p>
+                    <h6>Businesses fail when managers don’t lead with effective communication. I’m talking:</h6>
+                    <ul>
+                        <li>Empathy</li>
+                        <li>Clarity</li>
+                        <li>Poise</li>
+                        <li>Honesty</li>
+                        <li>Inner-security</li>
+                        <li>Integrity</li>
+                    </ul>
+                    <h6>Consequences of poor & ineffective communication from leaders projects confusing leadership into our employees. This causes consequences such as:</h6>
+                    <ul>
+                        <li>poorly defined performance expectations</li>
+                        <li>unclear delegation of tasks, so assignments get lost in translation</li>
+                        <li>poorly-prepared and poorly executed projects, events, & tasks</li>
+                        <li>high employee turnover rates</li>
+                        <li>a chaotic & disorganized work environment</li>
+                        <li>a lack of understanding in the company‘s mission & values because they were not clearly stated</li>
+                    </ul>
+                    <h6>You need your team’s trust. Employees lose trust in business leaders when:</h6>
+                    <ul>
+                        <li>thorough, honest, empathetic, & consistent feedback is not given</li>
+                        <li>the manager doesn’t take responsibility for their mistakes</li>
+                        <li>the manager is hard for employees to reach and speak with 1-1</li>
+                        <li>employees don’t feel secure in their performance</li>
+                        <li>employees’ quality of life is not prioritized</li>
+                        <li>employees don’t feel valued for the errorless & contributions to the company</li>
+                        <li>employee opinions aren’t heard or considered</li>
+                    </ul>
+                    <h6>Like every human being, entrepreneurs & business owners also struggle with:</h6>
+                    <ol>
+                        <li>Processing, articulating, and initiating hard feedback & hard conversations with their team members</li>
+                        <li>Setting boundaries with their team</li>
+                        <li>Making serious declarations to their team</li>
+                        <li>Making thorough & clear requests to their team members</li>
+                        <li>Communicating vulnerably with their team</li>
+                    </ol>
+                    <h6>Like all human beings, entrepreneurs/business owners also struggle with:</h6>
+                    <ul>
+                        <li>Advocating for their needs and the needs of the business</li>
+                        <li>Asserting themselves, their thoughts, & feelings to their team members</li>
+                        <li>Even taking the plunge to hire or fire someone for or from their team</li>
+                    </ul>
+                    <h5>Effective communication is key to growing & sustaining a socially & financially successful business!</h5>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="purchase mx-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="mb-5 text-center">
+                    <h3>Ready to Invest?</h3>
+                    <p class="m-0"><strong>$100</strong></p>
+                    <p><em>for instant access to the on demand workshop</em></p>
+                    <!-- PayPal Smart Button -->
+                    <div id="smart-button-container">
+                        <div style="text-align: center;">
+                            <div id="paypal-button-container"></div>
+                        </div>
+                    </div>
+                    <!-- PayPal Smart Button -->
+                    <script
+                    src="https://www.paypal.com/sdk/js?client-id={{ paypal_client_id }}&enable-funding=venmo&currency=USD"
+                    data-sdk-integration-source="button-factory"></script>
+                    <script>
+                    function initPayPalButton() {
+                        paypal.Buttons({
+                            style: {
+                                shape: 'rect',
+                                color: 'blue',
+                                layout: 'vertical',
+                                label: 'pay',
+
+                            },
+
+                            createOrder: function (data, actions) {
+                                return actions.order.create({
+                                    purchase_units: [{ "description": "Scale Your Biz Workshop", "amount": { "currency_code": "USD", "value": 1 } }]
+                                });
+                            },
+
+                            onApprove: function (data, actions) {
+                                return fetch('/payments/capture-paypal-transaction/', {
+                                    method: 'POST',
+                                    credentials: 'same-origin',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'X-Requested-With': 'XMLHttpRequest',
+                                        'X-CSRFToken': csrftoken,
+                                        
+                                    },
+                                    body: JSON.stringify({
+                                        orderID: data.orderID
+                                    })
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    actions.redirect("http://{{ request.get_host }}{% url 'thank_you_set_password' %}?status=" + data.status + "&transaction_id=" + data.transaction_id);
+                                })
+                            },
+
+                            onError: function (err) {
+                                console.log(err);
+                            }
+                        }).render('#paypal-button-container');
+                    }
+                    initPayPalButton();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $("#investNow").on("click", function () {
+        gsap.to(window, { duration: .75, scrollTo: { y: "section.purchase", offsetY: 95 } });
+    });
+</script>
+<script>
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getCookie('csrftoken');
+</script>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags cache %}
+
+{% block content %}
+
+{% cache 604800 homepage %}
+    <section class="hero">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-md-6 order-md-2">
+                    <div class="d-flex h-100 align-items-center">
+                        <div class="m-3">
+                            <h1>Hello! I am <span id="iam">Alexandria</span><span class="type-cursor">|</span></h1>
+                            <div class="hero-sub-heading">HSP | Coach | Speaker | Writer | Trauma Survivor | Pattern-Disrupter</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex h-100 align-items-end">
+                        <img class="img-fluid" src="img/lexi-cutout-2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-reminder" class="d-flex align-items-center">
+            <button id="scrollReminder" class="btn btn-primary" href="">
+                <span class="scroll-text">Learn More</span> <i class="fas fa-angle-double-down scroll-arrow"></i>
+            </button>
+        </div>
+    </section>
+
+    <section class="parallax quote">
+        <div class="section-bg"></div>
+        <div class="section-overlay"></div>
+        <div class="section-content m-3 p-md-5 p-4">
+            <div class="quote-text">
+                <h2 class="text-white text-center">You have abundant reasons to deeply respect and admire yourself.</h2>
+            </div>
+            <div class="qb-hz qb-top"></div>
+            <div class="qb-vt qb-right"></div>
+            <div class="qb-hz qb-bottom-right"></div>
+            <div class="qb-hz qb-bottom-left"></div>
+            <div class="qb-vt qb-left"></div>
+        </div>
+    </section>
+
+    <section class="intro panel">
+        <div class="panel-row">
+            <div class="panel-left rounded-xl">
+                <div class="panel-bg rounded-xl">
+                    <div class="panel-overlay rounded-xl">
+                        <div class="panel-border-container">
+                            <div class="panel-content d-flex justify-content-center align-items-center">
+                                <div class="mb-md-5 mb-0">
+                                    <h1>{{ self.bio_heading }}</h1>
+                                    <div class="panel-sub-heading rounded">
+                                        {{ self.bio_subheading }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pb-all pb-left"></div>
+                            <div class="pb-all pb-top"></div>
+                            <div class="pb-all pb-right"></div>
+                            <div class="pb-all pb-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-right">
+                {% for block in self.bio_content %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="stat full-width">
+        <div class="full-width-bg rounded-xl d-flex justify-content-center align-items-center">
+            <div class="quote">
+                <div class="quote-text">
+                    <div class="text-white text-center">
+                        <div class="fig-wrapper">
+                            15 to 20%
+                        </div>
+                        <h3 class="msg text-white m-0"> of people are HSPs</h3>
+                    </div>
+                </div>
+                <div class="quote-author text-center text-white">
+                    and it equally affects men and women
+                </div>
+                <div class="qb-hz qb-top"></div>
+                <div class="qb-vt qb-right"></div>
+                <div class="qb-hz qb-bottom-right"></div>
+                <div class="qb-hz qb-bottom-left"></div>
+                <div class="qb-vt qb-left"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="speaker panel">
+        <div class="panel-row">
+            <div class="panel-left rounded-xl">
+                <div class="panel-bg rounded-xl">
+                    <div class="panel-overlay rounded-xl">
+                        <div class="panel-border-container">
+                            <div class="panel-content d-flex justify-content-center align-items-center">
+                                <div class="mb-5">
+                                    <h1>{{ self.speaker_heading }}</h1>
+                                    <div class="panel-sub-heading rounded">
+                                        {{ self.speaker_subheading }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pb-all pb-left"></div>
+                            <div class="pb-all pb-top"></div>
+                            <div class="pb-all pb-right"></div>
+                            <div class="pb-all pb-bottom"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-right">
+                {% for block in self.speaker_content %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial full-width pb-3">
+        <div class="full-width-bg rounded-xl d-flex justify-content-center align-items-center">
+            <div id="testimonialCarousel" class="carousel slide w-100 h-100" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for testimonial in self.testimonials.all %}
+                        <li data-target="#testimonialCarousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner h-100">
+                    {% for testimonial in self.testimonials.all %}
+                        <div class="carousel-item h-100 {% if forloop.first %}active{% endif %}">
+                            <div class="quote-wrapper w-100 h-100 d-flex justify-content-center align-items-center">
+                                <div class="quote">
+                                    <div class="quote-text">
+                                        <p class="text-center mb-0 text-darker">{{ testimonial.testimonial_text }}</p>
+                                    </div>
+                                    <div class="quote-author text-center text-darker">
+                                        {{ testimonial.testimonial_author }}
+                                    </div>
+                                    <div class="qb-hz qb-top"></div>
+                                    <div class="qb-vt qb-right"></div>
+                                    <div class="qb-hz qb-bottom-right"></div>
+                                    <div class="qb-hz qb-bottom-left"></div>
+                                    <div class="qb-vt qb-left"></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                    <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+                    <i class="fas fa-chevron-circle-left"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                    <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+                    <i class="fas fa-chevron-circle-right"></i>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+{% endcache %}
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'js/animations.js' %}"></script>
+{% endblock extra_js %}

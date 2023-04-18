@@ -1,0 +1,497 @@
+{% extends "base.html" %} 
+{% load wagtailcore_tags wagtailimages_tags static subscribers_tags %} 
+{% block title %} How to Advocate for Yourself - Live Workshop {% endblock title %} 
+{% block extra_css %} 
+{% image self.header_image original as banner %}
+
+<style>
+    .vip-bg-image {
+        background-image: url(https://at-heroku-s3.s3.amazonaws.com/images/al-couch.original.jpg);
+    }
+</style>
+{% endblock %} 
+
+{% block content %}
+<script>
+    fbq('track', 'ViewContent');
+</script>
+<section class="hero advocate">
+    <div class="w-100 h-100">
+        <div class="row h-100 m-0">
+            <div class="col-md-6 vip-content">
+                <div class="h-100 d-flex align-items-center">
+                    <div class="m-5 w-100 text-center">
+                        <div class="sub-heading pre">
+                            Free Live Workshop
+                        </div>
+                        <hr class="w-50 my-3">
+                        <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+                        <hr class="w-50 my-3">
+                        <div class="sub-heading time">
+                            {{ self.webinar_date|date:"F j, Y" }} at {{ self.webinar_date|date:"P" }} MST
+                        </div>
+                        <div class="hero-cta">
+                            <button id="reserveNow1" class="reserve-now btn btn-success btn-lg my-md-5 my-3 btn-shadow" data-toggle="modal" data-target="#reserveSeat">Reserve
+                                My Seat!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 vip-bg-image" style="background-position: 50% 20%; background-size:cover">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="parallax parallax-half section-overlay">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-7 text-center d-flex align-items-center">
+                <div id="countdown">
+                    <h2 class="text-white">This Webinar Begins In:</h2>
+                    <div>
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div class="seperator">:</div>
+                    <div>
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div class="seperator">:</div>
+                    <div>
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div class="seperator">:</div>
+                    <div>
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            <div class="  col-md-5 d-flex justify-content-center">
+                <div class="bio-feat rounded">
+                    <div class="bio-img">
+                        <img class="img-fluid rounded" src="https://at-heroku-s3.s3.amazonaws.com/images/at-sunglasses.original.jpg" alt="Image of Alexandria Thibodeaux">
+                    </div>
+                    <div class="bio-text">
+                        <p class="mb-0"><strong>Alexandria Thibodeaux</strong></p>
+                        <p>The Boundary Badass&trade;</p>
+                        <p class="mb-0"><em>Interpersonal Communication Consultant</em></p>
+                    </div>
+                </div>
+                <div class="bio-text">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function getTimeRemaining(endtime) {
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+        return {
+            total,
+            days,
+            hours,
+            minutes,
+            seconds
+        };
+    }
+
+    function initializeClock(id, endtime) {
+        const clock = document.getElementById(id);
+        const daysSpan = clock.querySelector('.days');
+        const hoursSpan = clock.querySelector('.hours');
+        const minutesSpan = clock.querySelector('.minutes');
+        const secondsSpan = clock.querySelector('.seconds');
+
+        function updateClock() {
+            const t = getTimeRemaining(endtime);
+
+            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        const timeinterval = setInterval(updateClock, 1000);
+    }
+
+    const deadline = "{{ self.webinar_date|date:"F d Y H:i:s" }} UTC-0700";
+    initializeClock('countdown', deadline);
+</script>
+
+<section class="content mx-3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="my-5">
+                    <h3 class="mb-3">During This Live Webinar, You Will Learn:</h3>
+                    <div class="number-group d-flex">
+                        <div class="number-icon">
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                                <span>1</span>
+                            </div>
+                        </div>
+                        <div class="number-text">
+                            <h5>How to set boundaries.</h5>
+                            <p>Align your life with your needs, values, and expectations to truly live in integrity. Learn to protect and maintain your peace. Become a boundary badass and set & honor your boundaries with consistency!</p>
+                        </div>
+                    </div>
+                    <div class="number-group d-flex">
+                        <div class="number-icon">
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                                <span>2</span>
+                            </div>
+                        </div>
+                        <div class="number-text">
+                            <h5>How to assert yourself -- your thoughts, feelings, experience, and reality.</h5>
+                            <p>I'll teach you how to vulnerably &amp; honestly share both your inner &amp; outer world with assurance. No more feeling insecure when sharing and expressing your truth! No more hiding or dismissing your thoughts, feelings, experience,
+                                and reality!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="number-group d-flex">
+                        <div class="number-icon">
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                                <span>3</span>
+                            </div>
+                        </div>
+                        <div class="number-text">
+                            <h5>How to declare your needs.</h5>
+                            <p>Directly declaring your needs to someone(s) often feels scary for us because it can feel that we come across as domineering or insensitive -- this is not true! I'll teach you how to not ask for, but declare what you need, and
+                                do it feeling empowered and secure. No more avoiding your physical and emotional needs!</p>
+                        </div>
+                    </div>
+                    <div class="number-group d-flex">
+                        <div class="number-icon">
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                                <span>4</span>
+                            </div>
+                        </div>
+                        <div class="number-text">
+                            <h5>How to ask for what you want.</h5>
+                            <p>Instead of hoping things will happen to work in your favor to provide you with what you want from someone(s), we need to take action and ask. Asking for what we want feels foreign and uncomfortable for many women and if we
+                                don't ask for what we want, we'll perpetually be unfulfilled and won't create the life we truly want for ourselves. I'll teach you how to no longer ignore what you want out of your one, precious life!</p>
+                        </div>
+                    </div>
+                    <div class="number-group d-flex">
+                        <div class="number-icon">
+                            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                                <span>5</span>
+                            </div>
+                        </div>
+                        <div class="number-text">
+                            <h5>At the end of this webinar, you'll know exactly what to do to advocate for yourself with clarity.</h5>
+                            <p> No more uncertainty about what you need to do to advocate for yourself when initiating and navigating a hard conversation. STEP INTO THE SELF-ADVOCACY ARENA, MY FRIENDS!</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <h2>Are You Ready?</h2>
+                        <button id="reserveNow2" class="reserve-now btn btn-success btn-lg my-md-5 my-3" data-toggle="modal" data-target="#reserveSeat">Yes! Reserve My
+                            Seat!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="examples bg-success">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-white text-center">How I've Helped Others on Social</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div id="socialCarousel" class="carousel slide w-100 h-100" data-ride="carousel0" data-interval="false">
+                <ol class="carousel-indicators">
+                    <li data-target="#socialCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#socialCarousel" data-slide-to="1"></li>
+                    <li data-target="#socialCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="post-wrapper px-md-5 py-3 mx-md-5 mx-3">
+                                <div class="card post-example rounded-xl my-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <div class="post-img-wrapper mr-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="post-name">
+                                                Anonymous User
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p class="m-0">Hey everyone you came at a perfect time in my life. My common-law partner of 5 years broke up with me 2 weeks ago, without any warning or communication before hand. We were still planning our lives together.
+                                                We still have to share a bathroom in HIS parents house. He was my support so I have no income, no bank account, no car, no place to live, no friends to rely on or stay with, no family here, and we share
+                                                most of our friends. Which have recently shown I can’t trust them with this, and they’ve taken to supporting him instead. Another layer is he has blamed me for his own unhappiness and choices during the
+                                                last 2 years of Covid. He’s begun to speak negatively about the details of our separation to our friends which further isolates me from community. On top of that he’s been catching feelings for someone in
+                                                another city who he refers to as his “bestie” leading up to the break up and even texted each other the day we broke up and made plans to hook up when he went on vacation this week. It’s been 2 weeks. He’s
+                                                portraying that I’m exhausting him, and expects me to be mutual or over it within the first 3 days. All while telling me cares but not helping me through this at all. It’s been a lot of hurt to process so
+                                                suddenly. This was my best friend. He’s acting like a teenager now. Not taking any accountability or care. I have to talk to him again, to get him to at least stop talking about me in a negative light, but
+                                                i’m not sure how to get him to feel or listen at this point. It’s a small community and it’s very isolating. X</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card post-example post-response rounded-xl my-3 mx-md-5 mx-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <img src="https://at-heroku-s3.s3.amazonaws.com/images/at-social-round.original.png" alt="Alexandria Thibodeaux" class="post-img mr-2">
+                                            <div class="post-name">
+                                                Alexandria Thibodeaux
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p>I’m so sorry this is your current experience — I am holding space for you. ❤️</p>
+                                            <p>Here’s how I would approach and navigate the conversation with your ex:</p>
+                                            <div class="block-quote">
+                                                <p>“Hey, John. I know that you are feeling liberated from our relationship and you are allowed to feel that way. With that said, the actions you have taken to suddenly & abruptly end our five year relationship
+                                                    have truly devastated me. This process of grieving our relationship is and will continue to be much harder on me than it is on you. And I ask that while you continue to create this new life for yourself,
+                                                    that you please don’t say disparaging things about me to our mutual friends. When you do this, it hurts me even more and makes the process of grieving the loss of our shared life unnecessarily cruel
+                                                    because it isolates me from community during this intensely difficult time to me. I need to heal and I ask that you please allow me to do that by seeking support from friends. My intention is not to
+                                                    disparage you to our friends, but to simply have a community with which to support my grieving of our ended partnership.”</p>
+                                            </div>
+                                            <p>In regards to wanting connection with the these friends: you do not want those people as your friends — they are not aligned with you.</p>
+                                            <p>The company you keep are a reflection of your values, beliefs, priorities, and love of self — nurture that aligned community intentionally. Our community also significantly affects our well being & quality of
+                                                life.
+                                            </p>
+                                            <p>Of these people have already pledged allegiance to someone who has caused you tremendous hurt and likely trauma, they are not your people.</p>
+                                            <p class="m-0">You are worthy of a community who will hear you, see you, support you, and champion you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card post-example post-praise rounded-xl my-3 mx-md-5 mx-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <div class="post-img-wrapper mr-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="post-name">
+                                                Anonymous User
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p class="m-0">Oh my thank you so much for doing this emotional labour for me right now. Writing this out for me to kind've relay is so helpful and takes one more task off my back. Thank you so much.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="post-wrapper px-md-5 py-3 mx-md-5 mx-3">
+                                <div class="card post-example rounded-xl my-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <div class="post-img-wrapper mr-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="post-name">
+                                                Anonymous User
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p class="m-0">Does anyone else have a completely differnt love language to their partner? Or has done in the past? I'm someone who really needs quality time and physical touch (attention basically) but despite discussing
+                                                this with my boyfriend multiple times, it's like he's not even making an effort to try! Does anyone have any advice on how else to approach this with him, without resulting in an argument?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card post-example post-response rounded-xl my-3 mx-md-5 mx-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <img src="https://at-heroku-s3.s3.amazonaws.com/images/at-social-round.original.png" alt="Alexandria Thibodeaux" class="post-img mr-2">
+                                            <div class="post-name">
+                                                Alexandria Thibodeaux
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p>Start the conversation off light and breezy, in a way that doesn’t express or insinuate a hard or uncomfortable conversation.</p>
+                                            <p>Here’s how I would approach and navigate this conversation:</p>
+                                            <div class="block-quote">
+                                                <p>“Hey boo! I love us and I’m so grateful we’re together. 😊</p>
+                                                <p>And in this loving relationship, I want to ensure that we are loving each other in ways that serve both ourselves and the other person.</p>
+                                                <p>Because it’s important to me that I’m loving you in ways that are in alignment with you, in the ways that you want and need. And I want the same from you.</p>
+                                                <p>And I bring this up because in my experience, when I share with you my love language, so the ways I want and need to be loved, the ways that align with me, I feel as though you aren’t internalizing my words
+                                                    and making efforts to take action in loving me in the ways I’ve expressed to you I want to be loved.</p>
+                                                <p>And I want to understand your perspective on this too. And before we get there I want to say that if showing me love in my love language doesn’t serve you, if it strains you or bothers you in any way, if
+                                                    you feel like you’re compromising parts of yourself to love me in these ways, I want you to please let me know because this relationship is a two-way street and we need to understand each other and understand
+                                                    each other‘s experiences to continue nurturing our relationship.</p>
+                                                <p>Because the truth is: love is not compromise, love is alignment. And I want us to be in alignment with each other. And I want to make sure that we share that same value.”</p>
+                                            </div>
+                                            <p class="m-0">Then get his perspective on the matter and continue a productive dialogue from there!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card post-example post-praise rounded-xl my-3 mx-md-5 mx-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <div class="post-img-wrapper mr-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="post-name">
+                                                Anonymous User
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p class="m-0">Omg thank you so much for all of this!! I'm probably gonna read over this a fair few times before I go into this with him, just so I'm confident. This has really helped!!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="post-wrapper px-md-5 py-3 mx-md-5 mx-3">
+                                <div class="card post-example rounded-xl my-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <div class="post-img-wrapper mr-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="post-name">
+                                                Anonymous User
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p><strong>How do I set boundaries?</strong></p>
+                                            <p>Here’s the story:</p>
+                                            <p>Me, friend A, friend B were friends. B cut us off for a while because they were going through some things and needed space. (We didn’t know that at the time)</p>
+                                            <p>B apologized to me, but not A. With reason though, A was never THAT great of a friend to either of us. I honestly shouldn’t be friends with A, but I can’t let go. A and B got in a huge fight before the friendship
+                                                breakup- A said terrible things about B after so B didn’t want to contact them.</p>
+                                            <p>I’m friends with B again, and it’s absolutely the right decision. They have grown into an absolutely amazing person, while A seems to be getting more selfish.</p>
+                                            <p>A said “if B apologized to anyone, it should’ve been me.” Which really made me mad how selfish and narcissistic</p>
+                                            <p>A is also friend with someone my ex cheated on me with, might I add. I don’t even really care cause that was so long ago but it’s the same thing. So in their brain, it’s okay to be friends with someone that
+                                                hurt me but me being friends with B isn’t. If I’m hurt it’s fine but not A. Hypocrite. A was mad I wanted to be friends with B again and continues to crap talk B.</p>
+                                            <p class="m-0">What do I do if I want both of them to be bridesmaids at my wedding? Any advice in general would be great. This is so childish, I can be friends with whoever I want. It has NO effect on A. B is an absolute angel
+                                                and I will continue to be friends with them.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card post-example post-response rounded-xl my-3 mx-md-5 mx-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <img src="https://at-heroku-s3.s3.amazonaws.com/images/at-social-round.original.png" alt="Alexandria Thibodeaux" class="post-img mr-2">
+                                            <div class="post-name">
+                                                Alexandria Thibodeaux
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p>Here’s how I would set this boundary:</p>
+                                            <p>Tell them each individually that because you deeply value them and cherish your friendship, you would be honored to have them as a bridesmaid at your wedding. Then tell them that for those same reasons, it would
+                                                be meaningful for you to also have [friend A or B, respectively] as a bridesmaid. Also, tell each friend that you only want them to agree to this if their choice to do so feels aligned for them, honors their
+                                                integrity, and protects their peace. Assure each friend that you will understand and respect their decision to politely decline if agreeing to be a bridesmaid would negatively impact their well-being (dishonoring
+                                                their integrity and hindering their peace). Assure each friend that because their inner-peace is most important to you, your friendship and value of them as your friend will not suffer if they choose to
+                                                politely decline.</p>
+                                            <p class="m-0">I hope this helps!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card post-example post-praise rounded-xl my-3 mx-md-5 mx-3">
+                                    <div class="card-body">
+                                        <div class="post-user d-flex mb-3">
+                                            <div class="post-img-wrapper mr-2">
+                                                <i class="fas fa-user"></i>
+                                            </div>
+                                            <div class="post-name">
+                                                Anonymous User
+                                            </div>
+                                        </div>
+                                        <div class="post-content">
+                                            <p class="m-0">That was beautiful!!! You’re definitely great at what you do!!! 😊</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#socialCarousel" role="button" data-slide="prev">
+                    <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+                    <i class="fas fa-chevron-circle-left"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#socialCarousel" role="button" data-slide="next">
+                    <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+                    <i class="fas fa-chevron-circle-right"></i>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p class="text-center m-0">WARNING: Space is limited and this workshop will fill up because it provides unique and unparalleled information not found elsewhere.</p>
+                <button id="reserveNow3" class="reserve-now btn btn-success btn-lg mt-3" data-toggle="modal" data-target="#reserveSeat">Ok, I'm Ready to Reseve My Seat!</button>
+                <div class="text-center">
+                    <hr class="w-50">
+                    <h5 class="text-center">Share this webinar?</h5>
+                    <ul class="share-buttons">
+                        <li>
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}&quote={{ self.custom_title|urlencode }}" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Share on Facebook</span></a>
+                        </li>
+                        <li><a href="https://twitter.com/intent/tweet?source={{ request.build_absolute_uri|urlencode }}&text={{ self.custom_title|urlencode }}:%20{{ request.build_absolute_uri|urlencode }}"
+                                target="_blank" title="Tweet"><i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i><span class="sr-only">Tweet</span></a></li>
+                        <li>
+                            <a href="http://www.tumblr.com/share?v=3&u={{ request.build_absolute_uri|urlencode }}&quote={{ self.custom_title|urlencode }}&s=" target="_blank" title="Post to Tumblr"><i class="fab fa-tumblr-square fa-2x" aria-hidden="true"></i><span class="sr-only">Post to Tumblr</span></a></li>
+                        <li>
+                            <a href="http://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri|urlencode }}&description={{ self.custom_title|urlencode }}" target="_blank" title="Pin it"><i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i><span class="sr-only">Pin it</span></a>
+                        </li>
+                        <li>
+                            <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri|urlencode }}&title={{ self.custom_title|urlencode }}" target="_blank" title="Submit to Reddit"><i class="fab fa-reddit-square fa-2x" aria-hidden="true"></i><span class="sr-only">Submit to Reddit</span></a></li>
+                        <li>
+                            <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri|urlencode }}&title={{ self.custom_title|urlencode }}&summary=Free%20Live%20Workshop%20-%20December%2013%2C%202021%20at%207pm%20MST&source={{ request.build_absolute_uri|urlencode }}"
+                                target="_blank" title="Share on LinkedIn"><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i><span class="sr-only">Share on LinkedIn</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="reserveSeat" tabindex="-1" role="dialog" aria-labelledby="reserveSeatTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reserveSeatLongTitle">Reserve Your Seat Now!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Simply enter your information below to secure your spot.</p>
+                {% webinar_form %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
+
+{% block extra_js %} 
+
+{% endblock %}

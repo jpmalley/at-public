@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .vip-bg-image {
+            background-image: url({{ banner.url }});
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <script>
+        fbq('track', 'ViewContent');
+    </script>
+    <section class="hero vip-landing biz-landing">
+        <div class="w-100 h-100">
+            <div class="row h-100 m-0">
+                <div class="col-md-6 vip-content">
+                    <div class="d-flex h-100 pt-5">
+                        <div class="m-5 text-center">
+                            <h1 class="pt-5 pt-md-0">Biz VIP Day</h1>
+                            <div class="sub-heading mx-md-5 mx-0">
+                                <strong>For Entrepreneurs & Business&nbsp;Owners</strong> 
+                            </div>
+                            <div class="sub-heading mx-md-5 mx-0">
+                                Scripts Written & Tailored to Your Unique, Interpersonal Communication Needs with Your&nbsp;Team
+                            </div>
+                            <div class="hero-diagram m-md-5 m-3">
+                                <div class="row">
+                                    <div class="col-3 col-md-2">
+                                        <svg id="a-pin" data-name="A Pin" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 70 100">
+                                            <defs>
+                                                <style>
+                                                    .a-cls-1 {
+                                                        fill: #f4bc89;
+                                                    }
+                                                </style>
+                                            </defs>
+                                            <path class="a-cls-1"
+                                                d="M35.19,0A34.09,34.09,0,0,0,1.1,34.09C1.1,52.92,23.83,100,35.19,100s34.1-47.08,34.1-65.91A34.1,34.1,0,0,0,35.19,0Zm0,59.09a25,25,0,1,1,25-25A25,25,0,0,1,35.19,59.09Z" />
+                                            <path class="a-cls-1"
+                                                d="M27.56,25.1a.58.58,0,0,1,.18-.68,15.08,15.08,0,0,1,7.81-2.05c6.23,0,9.11,3.27,9.11,10.43v9.33a.55.55,0,0,1-.54.54H39.59a.59.59,0,0,1-.58-.54l-.25-1c-1.19,1.26-3.57,2.05-6.19,2.05-4.14,0-6.88-2.67-6.84-6.63,0-3.52,2.77-5.86,6.84-5.86,2.08,0,4,.75,4.68,1.9V31.11a2.52,2.52,0,0,0-2.78-2.55,9.43,9.43,0,0,0-4.31,1.15c-.18.11-.4,0-.54-.29Zm9.69,11.09a2.7,2.7,0,0,0-2-.9c-.9,0-1.52.5-1.52,1.29s.62,1.3,1.52,1.3a2.7,2.7,0,0,0,2-.9Z" />
+                                        </svg>
+                                    </div>
+                                    <div class="col-6 col-md-8">
+                                        <div class="w-100 h-100">
+                                            <div class="dotted-line w-100 mt-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 col-md-2">
+                                        <svg id="b-pin" data-name="B Pin" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 70 100">
+                                            <defs>
+                                                <style>
+                                                    .b-cls-1 {
+                                                        fill: #4d9796;
+                                                    }
+                                                </style>
+                                            </defs>
+                                            <path class="b-cls-1"
+                                                d="M35-.09A34.09,34.09,0,0,0,.91,34C.91,52.83,23.64,99.91,35,99.91S69.09,52.83,69.09,34A34.09,34.09,0,0,0,35-.09ZM35,59A25,25,0,1,1,60,34,25,25,0,0,1,35,59Z" />
+                                            <path class="b-cls-1"
+                                                d="M32.05,26.64a7.2,7.2,0,0,1,4.39-1.36c5.68,0,9.5,4.17,9.5,10.4s-3.82,10.44-9.5,10.44a8.59,8.59,0,0,1-6.09-2.38L29.81,45c-.14.32-.32.54-.57.54H25.17a.56.56,0,0,1-.54-.54V20a.55.55,0,0,1,.54-.5h6.34a.55.55,0,0,1,.54.5Zm0,11.34a3,3,0,0,0,2.84,2c2,0,3.31-1.73,3.31-4.32s-1.33-4.17-3.31-4.17a3,3,0,0,0-2.84,2Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub-heading author">
+                                with Alexandria Thibodeaux
+                            </div>
+                            <div class="hero-cta">
+                                <a class="btn btn-outline-primary btn-lg my-md-5 my-3" href="https://calendly.com/alexandriathibs/biz-vip-day-consultation-15-minutes-clone" onclick="fbq('track', 'Schedule');">Book a Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 vip-bg-image"
+                    style="background-position: 50% 20%; background-size:cover"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax parallax-half who-iam">
+        <div class="section-bg"></div>
+        <div class="section-overlay"></div>
+        <div class="section-content m-3 p-md-5 p-4">
+            <ul class="list-unstyled text-center text-primary">
+                <li>I’m a clarity connoisseur.</li>
+                <li>A clear communicator.</li>
+                <li>An audacious advocate.</li>
+                <li>A spellbinding speaker.</li>
+                <li>And a whole-hearted writer.</li>
+            </ul>
+            <p class="who-iam-cta text-center text-primary mt-5">There are marketing copywriters. Let me be your
+                <span>personal copywriter!</span>
+            </p>
+        </div>
+    </section>
+
+    <section class="content-1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="d-flex justify-content-center align-items-center w-100">
+                        <img src="{% static 'img/point-a.svg' %}" alt="" class="img-fluid ml-md-5 ml-4 my-md-5 my-4">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="d-flex align-items-center h-100">
+                        <div class="m-md-5 m-4">
+                            <blockquote class="blockquote">
+                                <p class="mb-0">"Ughhhh! I don’t want to think about this, let alone DO IT! I know this
+                                    will benefit me but the idea of figuring this out and/or doing it stresses me out so
+                                    much that I put it off, try to put it out of my mind, and avoid it."</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parallax parallax-half middle-part">
+        <div class="section-bg"></div>
+        <div class="section-overlay"></div>
+        <div class="section-content m-3 p-md-5 p-4">
+            <ul class="list-unstyled text-center text-primary">
+                <li>Fear.</li>
+                <li>Frustration.</li>
+                <li>Stress.</li>
+                <li>Stuckness.</li>
+                <li>Uncomfortability.</li>
+                <li>Apathy.</li>
+                <li>AVOIDANCE.</li>
+                <li>STAGNATION.</li>
+            </ul>
+            <p class="middle-part-cta text-center text-primary">LACK OF GETTING THE THING DONE.</p>
+        </div>
+    </section>
+
+    <section class="content-2">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="d-flex justify-content-center align-items-center w-100">
+                        <img src="{% static 'img/point-b.svg' %}" alt="" class="img-fluid ml-md-5 ml-4 my-md-5 my-4">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="d-flex align-items-center h-100">
+                        <div class="m-md-5 m-4">
+                            <blockquote class="blockquote">
+                                <p class="text-primary"><strong>IT’S DONE. IT’S BEEN DONE FOR YOU, ON YOUR BEHALF, SO
+                                        YOU DIDN’T HAVE TO.</strong></p>
+                                <p>"Wow...I was so stressed about thinking about this, let alone having the emotional
+                                    capacity to execute the planning process do this right now, and LOOK — IT’S DONE
+                                    ALREADY! IN 1 DAY!"</p>
+                                <p class="mb-0">I’ve removed the stress of YOU having to kick off this process. Now, you
+                                    can just focus on using your power to execute, enforce, declare, assert, and
+                                    advocate for yourself.</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vip-description">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                    <div class="text-center">
+                        <h2>Scripts written & tailored for entrepreneurs & business owners</h2>
+                        <a class="btn btn-outline-primary btn-lg my-5" href="https://calendly.com/alexandriathibs/biz-vip-day-consultation-15-minutes-clone" onclick="fbq('track', 'Schedule');">Book a Consultation</a>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li>
+                            To scale your business you've got to scale your team.
+                        </li>
+                        <li>
+                            Your company's sales and overall performance don't have to suffer due to poor communication.
+                        </li>
+                        <li>
+                            I help you make sure this STOPS in your biz & that it never happens again!
+                        </li>
+                        <li>
+                            No more hight urnovers or misaligned team members!
+                        </li>
+                        <li>
+                            No more assignments or expectations lost in translation!
+                        </li>
+                    </ul>
+                    <h4>To ensure effective communication with your team members, here's how I can help you:</h4>
+                    <ul>
+                        <li>
+                            I write personalized scripts tailored to your unique interpersonal needs in the workplace
+                        </li>
+                        <li>
+                            This includes:
+                            <ul>
+                                <li>
+                                    Hard conversations
+                                </li>
+                                <li>
+                                    Setting a boundary
+                                </li>
+                                <li>
+                                    Making a declaration
+                                </li>
+                                <li>
+                                    Making a request
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                    <h2>What you get:</h2>
+                    <ul>
+                        <li>A uniquely tailored script written for you, that addresses the unique subject you want to
+                            address with someone, either verbally or in written form, with clarity and confidence and
+                            represents you and your objective authentically with poise, intelligence, integrity,
+                            inner-security, and self-reverence, and resolves the challenge you are facing to process,
+                            decipher, and plan this emotionally intense and important communication.</li>
+                        <li>A 2-hour information session &mdash; we will speak on google meet for 2 hours to discuss
+                            your needs: the topic, or the task, of communication you need a written script for (a hard
+                            convo, a declaration, a boundary, or request) and I will take that information and honor how
+                            you want to be represented in this communication and write a uniquely tailored script to
+                            guide you through this conversation, declaration, boundary setting, or request with
+                            authenticity, poise, integrity, inner-security, and self-reverence.</li>
+                        <li>A completed script emailed to you by end of day.</li>
+                        <li>A coaching session for us to review and practice the script at the end of the day.</li>
+                        <li>Learn uniquely valuable and creative written verbal communication skills that champion you,
+                            empower you, and serve/benefit you.</li>
+                    </ul>
+                    <hr>
+                    <div class="text-center">
+                        <h2>I'll have it written and sent to you <u>ALL IN JUST ONE DAY!</u></h2>
+                        <a class="btn btn-outline-primary btn-lg my-5" href="https://calendly.com/alexandriathibs/biz-vip-day-consultation-15-minutes-clone" onclick="fbq('track', 'Schedule');">Book a Consultation</a>
+                    </div>
+                    <hr>
+                    <p class="mb-5"><em>Come prepared with your solution (a need for a hard convo, a boundary to be set, a declaration
+                        to you want to make and assert, or a request you want to make &mdash; I am here to implement
+                        your vision, thoughts, feelings, and objective with words that represent you and your objective
+                        with authenticity, poise, integrity, inner-security, and self-reverence; you are responsible for
+                        providing the name of the task you need to be completed.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="parallax testimonial vip-landing">
+        <div class="section-bg"></div>
+        <div class="section-overlay"></div>
+        <h2 class="text-center text-white">What People Are Saying</h2>
+        <div class="section-content mx-3 mt-5 mb-3">
+            <div id="testimonialCarousel" class="carousel slide w-100 h-100" data-ride="carousel0" data-interval="false">
+                <ol class="carousel-indicators">
+                    <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#testimonialCarousel" data-slide-to="1"></li>
+                    <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+                    <li data-target="#testimonialCarousel" data-slide-to="3"></li>
+                    <li data-target="#testimonialCarousel" data-slide-to="4"></li>
+                </ol>
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item h-100 active">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="testimonial-wrapper">
+                                <div class="testimonial-text">
+                                    <p class="text-center mb-0 text-white">Working with Alexandria has helped me to move out of place of judgement of myself and get in touch with the parts of myself that need healing. She has helped me navigate where I need to work in a way that is very straight forward and catered to my specific situation. She is amazing and tapping into exactly what I need to focus on with clear instructions and is careful that it is something that feels safe for me. I love working with her, it has changed my&nbsp;life.</p>
+                                </div>
+                                <div class="testimonial-author text-center text-white">
+                                    Tiffany G, CA
+                                </div>
+                                <div class="qb-hz qb-top"></div>
+                                <div class="qb-vt qb-right"></div>
+                                <div class="qb-hz qb-bottom-right"></div>
+                                <div class="qb-hz qb-bottom-left"></div>
+                                <div class="qb-vt qb-left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="testimonial-wrapper">
+                                <div class="testimonial-text">
+                                    <p class="text-center mb-0 text-white">Alexandria provided me with clear and concise questions to ask myself during a time period in my life where the decision I was faced with was in a total gray area. She helped me navigate through the murky waters of my emotions to a clear decision that brought peace to my soul. Her ability to read between the lines, connect with her surroundings, and attentively listen and pay attention to detail gives her an upper hand to add much needed perspective to a number of scenarios: personal, relational, or professional. I recommend her as a coach to help you align with your inner voice of reason. She is a true delight to converse with and receive amazing feedback!</p>
+                                </div>
+                                <div class="testimonial-author text-center text-white">
+                                    Tiffany M, St. Louis
+                                </div>
+                                <div class="qb-hz qb-top"></div>
+                                <div class="qb-vt qb-right"></div>
+                                <div class="qb-hz qb-bottom-right"></div>
+                                <div class="qb-hz qb-bottom-left"></div>
+                                <div class="qb-vt qb-left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="testimonial-wrapper">
+                                <div class="testimonial-text">
+                                    <p class="text-center mb-0 text-white">I wanted to take the time to articulate my long-running gratitude for you. I have watched you grow and build your business, but aside from the admiration I hold for you as an ever-pursuant businesswoman, I want to focus my gratitude on the services that you provide. After our conversation, Transformation Session, I felt the need to pursue the journey that is Self-Reverence and Love for myself. You are well read and knowledgeable on the ability our minds hold to remold and re-authenticate ourselves, even after enduring trauma! I was a skeptic, I will not lie, as culturally I was taught the good ol, "Toughen up buttercup" mentality. Nevertheless, I went in with a somewhat closed mindedness and you derailed my questionability in just 30 minutes. I am amazed at the revelations that came about and you gave me a safe space to be able to reveal some great and not so great parts of myself. I think when one thinks of a coach, they assume the coach will just tell them what to do. You guide and mold our thoughts in a way that makes us stay true to ourselves and our current abilities. As a scientist I firmly believe, " Success is a science; if you have the conditions, you get the result." A quote from Oscar Wilde. I resolutely affirm that what you are providing are the conditions for our overall self- success. Thank you!</p>
+                                </div>
+                                <div class="testimonial-author text-center text-white">
+                                    Miryam T,  El Paso
+                                </div>
+                                <div class="qb-hz qb-top"></div>
+                                <div class="qb-vt qb-right"></div>
+                                <div class="qb-hz qb-bottom-right"></div>
+                                <div class="qb-hz qb-bottom-left"></div>
+                                <div class="qb-vt qb-left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="testimonial-wrapper">
+                                <div class="testimonial-text">
+                                    <p class="text-center mb-0 text-white">As an HSP, it can be challenging and overwhelming to navigate this insensitive world; my transformation session with Alexandria was what my soul needed. I felt so seen, validated, celebrated, and empowered! I learned, healed, and feel cleared of any self-doubts I was experiencing. Thank you Alexandria for this empowering and healing session!</p>
+                                </div>
+                                <div class="testimonial-author text-center text-white">
+                                    Nicole J, Gurnee
+                                </div>
+                                <div class="qb-hz qb-top"></div>
+                                <div class="qb-vt qb-right"></div>
+                                <div class="qb-hz qb-bottom-right"></div>
+                                <div class="qb-hz qb-bottom-left"></div>
+                                <div class="qb-vt qb-left"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="testimonial-wrapper">
+                                <div class="testimonial-text">
+                                    <p class="text-center mb-0 text-white">I had a brief coaching session with Alexandria to help clarify a decision I am making. She was quickly able to help me see the situation more clearly and gave me effective tools to help evaluate my decision. She is very kind, warm and understanding. Alexandria is a wonderful speaker and a wise and helpful guide. I’m grateful for her clarity and support.</p>
+                                </div>
+                                <div class="testimonial-author text-center text-white">
+                                    Sadie K, Maui
+                                </div>
+                                <div class="qb-hz qb-top"></div>
+                                <div class="qb-vt qb-right"></div>
+                                <div class="qb-hz qb-bottom-right"></div>
+                                <div class="qb-hz qb-bottom-left"></div>
+                                <div class="qb-vt qb-left"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                    <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span> -->
+                    <i class="fas fa-chevron-circle-left"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                    <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span> -->
+                    <i class="fas fa-chevron-circle-right"></i>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="instagram-love">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <div class="insta-quote text-center">
+                            <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                            You have articulated what I’ve felt for a very long time.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <div class="insta-quote text-center">
+                            <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                            In short, thank you!!! I feel like I receive confirmation that the way I handle myself is valid and I should not be embarrassed. I used to speak my mind and I feel like I am getting there slowly but surely, well at least with what I want. So again THANK YOU THANK YOU!”
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <div class="insta-quote text-center">
+                            <div class="quote-left-icon"><i class="fas fa-quote-left"></i></div>
+                            <div class="quote-right-icon"><i class="fas fa-quote-right"></i></div>
+                            Everyone should process and digest what you’ve said here ASAP. Tag some parents!
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/vip-animations.js' %}"></script>
+{% endblock %}

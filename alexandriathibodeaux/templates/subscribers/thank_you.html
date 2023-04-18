@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags widget_tweaks wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .layer-bg {
+            background-image: url({{ banner.url }});
+            background-position: {{ self.header_image_position }};
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="flex-page">
+        <div id="header-image">
+            <div class="layer-bg layer parallax" data-depth="0.40"></div>
+        </div>
+        <div class="header-spacer w-100"></div>
+        <div class="bg-white py-5">
+            <div class="container h-100 position-relative">
+                <div class="title rounded-xl px-3">
+                    <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 offset-2 text-center">
+                        <h2 class="text-center">Thank you, {{ subscriber.first }}!</h2>
+                        <p class="text-center">{{ subscriber.email }} has been added to the mailing list.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 offset-2">
+                        {% for block in self.thank_you_text %}
+                            {% include_block block %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/header-animations.js' %}"></script>
+{% endblock %}

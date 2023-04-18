@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailcore_tags subscribers_tags %}
+
+{% block content %}
+
+    <section class="blog blog-detail min-height">
+        <div class="container">
+            <a class="blog-heading-link" href="{% pageurl page %}">
+                <div class="blog-heading rounded">
+                    <h1>Alexandria's Words</h1>
+                </div>
+            </a>
+            <nav id="blog-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler-btn btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#blogNav" aria-controls="blogNav" aria-expanded="false" aria-label="Toggle navigation">
+                    Blog Menu
+                </button>
+
+                <div class="collapse navbar-collapse" id="blogNav">
+                    <ul class="navbar-nav">
+                        {% for item in self.menu_items.all %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% pageurl page %}category/{{ item.slug }}/">{{ item.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button id="nav-left" class="nav-overlay-left btn btn-link">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <button id="nav-right" class="nav-overlay-right btn btn-link">
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </nav>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="post-tags">
+                        <span class="badge badge-secondary tags">All Posts In</span>
+                    </div>
+                    <h2 class="post-title mb-4">{{ category }}</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+
+                    <section class="recent-posts">
+                        <div class="row">
+                            {% for post in posts %}
+                                <div class="col-md-6">
+                                    <div class="blog-post">
+                                        {% image post.main_image fill-542x278 as main_image %}
+                                        <div class="blog-img rounded" style="background-image: url({{ main_image.url }}); background-size: cover">
+                                            <div class="blog-meta">
+                                                <span class="badge badge-dark post-date"><i class="far fa-clock"></i> {{ post.first_published_at|date:"F j, Y" }}</span>
+                                                {% if post.categories %}
+                                                    {% for cat in post.categories.all %} <a href="{% pageurl page %}category/{{ cat.slug }}/"><span class="badge badge-secondary tags">{{ cat }}</span></a> {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <a href="{{ post.url }}">
+                                            <div class="blog-title rounded">
+                                                <h3>{% if post.custom_title %} {{ post.custom_title }} {% else %} {{ post.title }} {% endif %}</h3>
+                                            </div>
+                                        </a>
+                                        <div class="blog-preview">
+                                            {{ post.content.0|truncatewords_html:35 }}
+                                            <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </section>
+
+                </div>
+                <div class="col-md-4">
+
+                    <section class="sidebar">
+                        <div class="rounded p-4">
+                            <h5 class="mb-3">Sign Up for Posts in Your Inbox</h5>
+                            {% subscriber_form %}
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% comment %} {% image self.blog_image fill-1200x300 as banner %}
+    <img class="w-100" src="{{ banner.url }}" alt="{{ banner.alt }}">
+    <div class="container">
+        <div class="text-center my-5">
+            <h2>{{ self.custom_title }}</h2>
+        </div>
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
+    </div> {% endcomment %}
+
+{% endblock content %}
+
+{% block extra_js %} 
+    <script>
+        $(function() {
+            var nav = $("#blog-nav .nav-item a")
+            for (let i = 0; i < nav.length; i++) { 
+                if ($(nav[i]).attr("href") == location.pathname) {
+                    $(nav[i]).addClass('active').append("<span class=\"sr-only\">(current)</span>");
+                }
+            }
+        });
+    </script>
+    <script>
+        $("#nav-right").on("click", function() {
+            scrollDistance = $("#blogNav .navbar-nav").width() - $("#blogNav").width();
+            gsap.to("#blogNav", { duration: .5, scrollLeft: scrollDistance });
+            gsap.to("#nav-right", { duration: .5, autoAlpha: 0 });
+            gsap.to("#nav-left", { duration: .5, autoAlpha: 1 });
+        });
+        $("#nav-left").on("click", function() {
+            gsap.to("#blogNav", { duration: .5, scrollLeft: 0 });
+            gsap.to("#nav-left", { duration: .5, autoAlpha: 0 });
+            gsap.to("#nav-right", { duration: .5, autoAlpha: 1 });
+        });
+    </script>
+{% endblock %}

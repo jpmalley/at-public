@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+<section class="min-height">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center my-4">{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card bg-light p-2 mb-4">
+                    <div class="embed-wrapper">
+                        {{ page.video_embed_code|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                {% for block in page.content %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/header-animations.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% load wagtailimages_tags wagtailcore_tags subscribers_tags cache %}
+
+{% block content %}
+
+    <section class="blog min-height">
+        <div class="container">
+            <div class="blog-heading rounded">
+                <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+            </div>
+            <nav id="blog-nav" class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler-btn btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#blogNav" aria-controls="blogNav" aria-expanded="false" aria-label="Toggle navigation">
+                    Blog Menu
+                </button>
+
+                <div class="collapse navbar-collapse" id="blogNav">
+                    <ul class="navbar-nav">
+                        {% for item in self.menu_items.all %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% pageurl page %}category/{{ item.slug }}">{{ item.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button id="nav-left" class="nav-overlay-left btn btn-link">
+                    <i class="fas fa-angle-left"></i>
+                </button>
+                <button id="nav-right" class="nav-overlay-right btn btn-link">
+                    <i class="fas fa-angle-right"></i>
+                </button>
+            </nav>
+
+            <section class="blog-hero">
+                <div class="grid-container">
+                    {% image posts.0.main_image fill-745x385 as main_image_1 %}
+                    {% image posts.1.main_image fill-542x278 as main_image_2 %}
+                    {% image posts.2.main_image fill-542x278 as main_image_3 %}
+                    <div class="grid-item item-1 rounded" style="background-image: url({{ main_image_1.url }}); background-size: cover">
+                        <div class="content">
+                            <div class="blog-meta">
+                                <span class="badge badge-dark post-date"><i class="far fa-clock"></i> {{ posts.0.first_published_at|date:"F j, Y" }}</span>
+                                {% if posts.0.categories %}
+                                    {% for cat in posts.0.categories.all %}<a href="{% pageurl page %}category/{{ cat.slug }}/"><span class="badge badge-secondary tags">{{ cat }}</span></a> {% endfor %}
+                                {% endif %}
+                            </div>
+                            <a href="{{ posts.0.url }}">
+                                <div class="post-title rounded">
+                                    <h2 class="text-white m-0">{% if posts.0.custom_title %} {{ posts.0.custom_title }} {% else %} {{posts.0.title}} {% endif %}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid-item item-2 rounded" style="background-image: url({{ main_image_2.url }}); background-size: cover">
+                        <div class="content">
+                            <div class="blog-meta">
+                                <span class="badge badge-dark post-date"><i class="far fa-clock"></i> {{ posts.1.first_published_at|date:"F j, Y" }}</span>
+                                {% if posts.1.categories %}
+                                    {% for cat in posts.1.categories.all %}<a href="{% pageurl page %}category/{{ cat.slug }}/"><span class="badge badge-secondary tags">{{ cat }}</span> {% endfor %}
+                                {% endif %}
+                            </div>
+                            <a href="{{ posts.1.url }}">
+                                <div class="post-title rounded">
+                                    <h2 class="text-white m-0">{% if posts.1.custom_title %} {{ posts.1.custom_title }} {% else %} {{posts.1.title}} {% endif %}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="grid-item item-3 rounded" style="background-image: url({{ main_image_3.url }}); background-size: cover">
+                        <div class="content">
+                            <div class="blog-meta">
+                                <span class="badge badge-dark post-date"><i class="far fa-clock"></i> {{ posts.2.first_published_at|date:"F j, Y" }}</span>
+                                {% if posts.2.categories %}
+                                    {% for cat in posts.2.categories.all %}<a href="{% pageurl page %}category/{{ cat.slug }}/"><span class="badge badge-secondary tags">{{ cat }}</span></a> {% endfor %}
+                                {% endif %}
+                            </div>
+                            <a href="{{ posts.2.url }}">
+                                <div class="post-title rounded">
+                                    <h2 class="text-white m-0">{% if posts.2.custom_title %} {{ posts.2.custom_title }} {% else %} {{posts.2.title}} {% endif %}</h2>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-4 my-md-5">
+
+            <div class="row">
+                <div class="col-md-8">
+
+                    <section class="recent-posts">
+                        <div class="row">
+
+                            {% for post in posts|slice:"3:" %}
+                                <div class="col-md-6">
+                                    <div class="blog-post">
+                                        {% image post.main_image fill-542x278 as main_image %}
+                                        <div class="blog-img rounded" style="background-image: url({{ main_image.url }}); background-size: cover">
+                                            <div class="blog-meta">
+                                                <span class="badge badge-dark post-date"><i class="far fa-clock"></i> {{ post.first_published_at|date:"F j, Y" }}</span>
+                                                {% if post.categories %}
+                                                    {% for cat in post.categories.all %} <a href="{% pageurl page %}category/{{ cat.slug }}/"><span class="badge badge-secondary tags">{{ cat }}</span></a> {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <a href="{{ post.url }}">
+                                            <div class="blog-title rounded">
+                                                <h3>{% if post.custom_title %} {{ post.custom_title }} {% else %} {{post.title}} {% endif %}</h3>
+                                            </div>
+                                        </a>
+                                        <div class="blog-preview">
+                                            {{ post.content.0|truncatewords_html:35 }}
+                                            <a href="{{ post.url }}" class="btn btn-outline-primary btn-sm">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        
+                        </div>
+                    </section>
+
+                </div>
+                <div class="col-md-4">
+
+                    <section class="sidebar">
+                        <div class="rounded p-4">
+                            <h5 class="mb-3">Sign Up for Posts in Your Inbox</h5>
+                            {% subscriber_form %}
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    $("#nav-right").on("click", function() {
+        scrollDistance = $("#blogNav .navbar-nav").width() - $("#blogNav").width();
+        gsap.to("#blogNav", { duration: .5, scrollLeft: scrollDistance });
+        gsap.to("#nav-right", { duration: .5, autoAlpha: 0 });
+        gsap.to("#nav-left", { duration: .5, autoAlpha: 1 });
+    });
+    $("#nav-left").on("click", function() {
+        gsap.to("#blogNav", { duration: .5, scrollLeft: 0 });
+        gsap.to("#nav-left", { duration: .5, autoAlpha: 0 });
+        gsap.to("#nav-right", { duration: .5, autoAlpha: 1 });
+    });
+</script>
+{% endblock extra_js %}
+

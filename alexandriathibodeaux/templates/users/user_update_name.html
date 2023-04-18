@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load widget_tweaks user_tags %}
+
+{% block title %}{% trans "Update Name" %}{% endblock %}
+
+{% block content %}
+
+<section class="min-height">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Hello{% if request.user.first_name %}, {{ request.user.first_name }}{% endif %}!</h3>
+                        <p>{{ request.user.email }}</p>
+                        <hr class="my-3">
+                        <ul class="nav flex-column account-nav">
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="/account/">Exclusive Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0 active" href="/account/">Update Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="{% url 'account_change_password' %}">Change Password</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="{% url 'account_email' %}">Update Email</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="{% url 'account_logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="m-3">
+                    
+                    <h4 class="mt-2">{% trans "Update Name" %}</h4>
+
+                    <form method="post" action="/account/name/" class="">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.errors }}
+                                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field|add_class:"form-control" }}
+                                {% if field.help_text %}
+                                    <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <button class="btn btn-outline-primary btn-sm mr-1" type="submit">{% trans "Update Name" %}</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

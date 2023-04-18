@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags widget_tweaks wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .layer-bg {
+            background-image: url({{ banner.url }});
+            background-position: {{ self.header_image_position }};
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="flex-page">
+        <div id="header-image">
+            <div class="layer-bg layer parallax" data-depth="0.40"></div>
+        </div>
+        <div class="header-spacer w-100"></div>
+        <div class="bg-white py-5">
+            <div class="container h-100 position-relative">
+                <div class="title rounded-xl px-3">
+                    <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 offset-2">
+                        {% for block in page.content %}
+                            {% include_block block %}
+                        {% endfor %}
+                        <form action="{% pageurl page %}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="col-6">
+                                    <label class="sr-only" for="{{ form.first.id_for_label }}">First name</label>
+                                    {{ form.first.errors }}
+                                    {{ form.first|add_class:"form-control" }}
+                                </div>
+                                <div class="col-6">
+                                    <label class="sr-only" for="{{ form.last.id_for_label }}">Last name</label>
+                                    {{ form.last.errors }}
+                                    {{ form.last|add_class:"form-control" }}
+                                </div>
+                            </div>
+                            <div class="form-row mt-2">
+                                <div class="col-12">
+                                    <label class="sr-only" for="{{ form.email.id_for_label }}">Email address</label>
+                                    {{ form.email.errors }}
+                                    {{ form.email|add_class:"form-control" }}
+                                </div>
+                            </div>
+                            <div class="form-row mt-4">
+                                <div class="col-12">
+                                    <button class="btn btn-block btn-secondary" value="submit" type="submit">Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/header-animations.js' %}"></script>
+{% endblock %}

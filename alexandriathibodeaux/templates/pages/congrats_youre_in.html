@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .vip-bg-image {
+            background-image: url({{ banner.url }});
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<script>
+    fbq('track', 'Purchase', {
+      value: 97,
+      currency: 'usd',
+    });
+</script>
+    
+    <section class="confirmation d-flex align-items-center justify-content-center">
+        <div class="card m-4">
+            <img class="card-img-top" src="https://at-heroku-s3.s3.amazonaws.com/images/at-about.original.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h3 class="card-title">Congrats, you're in!</h3>
+                <p>Stay tuned for more info. In the meantime, please consider joining <a href="/subscribe/">my mailing list</a>, and subsibribing to my <a href="https://thelibraryofalexandria.buzzsprout.com/">podcast</a>. If you have any questions, please <a href="mailto:hello@alexandriathibodeaux.com?subject=Self%20Advocate%20Audaciously%20Question">contact me</a>.</p>
+                <div class="w-100 d-flex align-items-center justify-content-center">
+                    <div class="follow-icons">
+                        <a href="/subscribe/"><i class="fas fa-envelope"></i></a>
+                        <a href=""><i class="fas fa-podcast"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var suppressMsg = true
+    </script>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/vip-animations.js' %}"></script>
+{% endblock %}

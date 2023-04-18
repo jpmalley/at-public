@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags widget_tweaks wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .layer-bg {
+            background-image: url({{ banner.url }});
+            background-position: {{ self.header_image_position }};
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="flex-page">
+        <div id="header-image">
+            <div class="layer-bg layer parallax" data-depth="0.40"></div>
+        </div>
+        <div class="header-spacer w-100"></div>
+        <div class="bg-white py-5">
+            <div class="container h-100 position-relative">
+                <div class="title rounded-xl px-3">
+                    <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+                </div>
+            </div>
+            <div class="container">
+                {% for block in page.content %}
+                    {% include_block block %}
+                {% endfor %}
+                <form action="{% pageurl page %}" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            {{ field.errors }}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field|add_class:"form-control" }}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                    <input type="submit" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/header-animations.js' %}"></script>
+{% endblock %}

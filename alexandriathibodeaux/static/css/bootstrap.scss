@@ -1,0 +1,111 @@
+// Color system
+
+$white:    #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black:    #000;
+
+$grays: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
+
+$blue:    #2694cf;
+$indigo:  #63345a; // official
+$purple:  #97608b; // official
+$pink:    #ec3f8d;
+$red:     #f23636;
+$orange:  #e89d84; // official
+$yellow:  #fcd3a8; // official
+$green:   #4D9796; // official
+$teal:    #356867; // official 
+$cyan:    #22ccee;
+
+$colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+  (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "white":      $white,
+    "gray":       $gray-600,
+    "gray-dark":  $gray-800
+  ),
+  $colors
+);
+
+$primary:       $green;
+$secondary:     $yellow;
+$success:       $purple;
+$info:          $gray-500;
+$warning:       $yellow;
+$danger:        $red;
+$light:         $gray-100;
+$dark:          $gray-800;
+
+$theme-colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
+
+// Grid columns
+$grid-gutter-width: 20px;
+
+// Border radius
+// $btn-border-radius:           50rem;
+// $btn-border-radius-lg:        50rem;
+// $btn-border-radius-sm:        50rem;
+
+// $input-border-radius:         50rem;
+// $input-border-radius-lg:      50rem;
+// $input-border-radius-sm:      50rem;
+
+// Typography
+$font-family-sans-serif:      "Assistant", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$headings-font-family:        "Playfair Display";
+$headings-font-weight:        400;
+$headings-line-height:        1.2;
+$headings-color:              $green;
+
+$btn-font-family:             "Montserrat";
+
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";

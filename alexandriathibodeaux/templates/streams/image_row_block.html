@@ -1,0 +1,40 @@
+{% load wagtailimages_tags %}
+
+<div class="row">
+    <div class="col-md-3 col-6">
+        {% image self.image_1 fill-600x600 as image_1 %}
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="{{ image_1.url }}" alt="{{ image_1.alt }}">
+            {% if self.image_1_caption %}
+                <figcaption class="figure-caption">{{ self.image_1_caption }}</figcaption>
+            {% endif %}
+        </figure>
+    </div>
+    <div class="col-md-3 col-6">
+        {% image self.image_2 fill-600x600 as image_2 %}
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="{{ image_2.url }}" alt="{{ image_2.alt }}">
+            {% if self.image_2_caption %}
+                <figcaption class="figure-caption">{{ self.image_2_caption }}</figcaption>
+            {% endif %}
+        </figure>
+    </div>
+    <div class="col-md-3 col-6">
+        {% image self.image_3 fill-600x600 as image_3 %}
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="{{ image_3.url }}" alt="{{ image_3.alt }}">
+            {% if self.image_3_caption %}
+                <figcaption class="figure-caption">{{ self.image_3_caption }}</figcaption>
+            {% endif %}
+        </figure>
+    </div>
+    <div class="col-md-3 col-6">
+        {% image self.image_4 fill-600x600 as image_4 %}
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="{{ image_4.url }}" alt="{{ image_4.alt }}">
+            {% if self.image_4_caption %}
+                <figcaption class="figure-caption">{{ self.image_4_caption }}</figcaption>
+            {% endif %}
+        </figure>
+    </div>
+</div>

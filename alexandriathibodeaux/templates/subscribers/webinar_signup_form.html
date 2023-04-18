@@ -1,0 +1,28 @@
+{% load  widget_tweaks wagtailcore_tags %}
+<form action="{{ self.url_path }}" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-6">
+            <label class="sr-only" for="{{ subscriber_form.first.id_for_label }}">First name</label>
+            {{ subscriber_form.first.errors }}
+            {{ subscriber_form.first|add_class:"form-control" }}
+        </div>
+        <div class="col-6">
+            <label class="sr-only" for="{{ subscriber_form.last.id_for_label }}">Last name</label>
+            {{ subscriber_form.last.errors }}
+            {{ subscriber_form.last|add_class:"form-control" }}
+        </div>
+    </div>
+    <div class="form-row mt-2">
+        <div class="col-12">
+            <label class="sr-only" for="{{ subscriber_form.email.id_for_label }}">Email address</label>
+            {{ subscriber_form.email.errors }}
+            {{ subscriber_form.email|add_class:"form-control" }}
+        </div>
+    </div>
+    <div class="form-row mt-4">
+        <div class="col-12">
+            <button class="btn btn-lg btn-block btn-secondary" value="submit" type="submit">Reserve</button>
+        </div>
+    </div>
+</form>

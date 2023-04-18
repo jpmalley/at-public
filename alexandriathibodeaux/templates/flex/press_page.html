@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags flex_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .layer-bg {
+            background-image: url({{ banner.url }});
+            background-position: {{ self.header_image_position }};
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="flex-page press-page">
+         <div id="header-image">
+            <div class="layer-bg layer parallax" data-depth="0.40"></div>
+        </div>
+        <div class="header-spacer w-100"></div>
+        <div class="bg-white pt-5">
+            <div class="container h-100 position-relative">
+                <div class="title rounded-xl px-3">
+                    <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        {% for block in page.top_content %}
+                        {% include_block block %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                {% for section in self.press_sections.all %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bg-light rounded-xl press-section w-100 p-4 my-3">
+                            <h2>{{ section.section_title }}</h2>
+                            <div class="row">
+                                {% for col in section.press_link.all|rows:2 %}
+                                <div class="col-md-6">
+                                    {% for row in col %}
+                                    <div class="press-link mb-2">
+                                        <a href="{{ row.link_url }}">{{ row.link_text }}</a>
+                                        {% if row.link_desc %} <div class="link-desc">{{ row.link_desc }}</div> {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bg-light rounded-xl press-section w-100 p-4 my-3">
+                            {% for block in page.carousel_content %}
+                            {% include_block block %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        {% for block in page.bottom_content %}
+                        {% include_block block %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/header-animations.js' %}"></script>
+{% endblock %}

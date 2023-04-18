@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .layer-bg {
+            background-image: url({{ banner.url }});
+            background-position: {{ self.header_image_position }};
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="flex-page">
+        <div id="header-image">
+            <div class="layer-bg layer parallax" data-depth="0.40"></div>
+        </div>
+        <div class="header-spacer w-100"></div>
+        <div class="bg-white main-content">
+            <div class="container h-100 position-relative">
+                <div class="title rounded-xl px-3">
+                    <h1>{% if self.custom_title %} {{ self.custom_title }} {% else %} {{self.title}} {% endif %}</h1>
+                </div>
+            </div>
+            <div class="container">
+                {% for block in page.content %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/header-animations.js' %}"></script>
+{% endblock %}

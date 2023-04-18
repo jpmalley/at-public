@@ -1,0 +1,21 @@
+{% load  widget_tweaks wagtailcore_tags %}
+<form action="{% slugurl 'subscribe' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="col-6">
+            <label class="sr-only" for="{{ footer_form.first.id_for_label }}">First name</label>
+            {{ footer_form.first.errors }}
+            {{ footer_form.first|add_class:"form-control" }}
+        </div>
+        <div class="col-6">
+            <label class="sr-only" for="{{ footer_form.email.id_for_label }}">Email address</label>
+            {{ footer_form.email.errors }}
+            {{ footer_form.email|add_class:"form-control" }}
+        </div>
+    </div>
+    <div class="form-row mt-2">
+        <div class="col-12">
+            <button class="btn btn-block btn-outline-secondary" value="submit" type="submit">Subscribe</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+{% load wagtailimages_tags %}
+
+{% image self.image width-740 as image %}
+<div class="w-100 d-flex justify-content-{{ self.alignment }}">
+    <figure class="figure feat-img my-3" style="max-width: {{ self.width }}%">
+        <img class="figure-img img-fluid rounded" src="{{ image.url }}" alt="{{ image.alt }}">
+        {% if self.image_caption %}
+            <figcaption class="figure-caption">{{ self.image_caption }}</figcaption>
+        {% endif %}
+    </figure>
+</div>

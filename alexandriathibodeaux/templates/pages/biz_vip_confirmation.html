@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block extra_css %}
+    {% image self.header_image original as banner %}
+    <style>
+        .vip-bg-image {
+            background-image: url({{ banner.url }});
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <script>
+        fbq('track', 'CompleteRegistration');
+    </script>
+    
+    <section class="confirmation d-flex align-items-center justify-content-center">
+        <div class="card m-4">
+            <img class="card-img-top" src="https://at-heroku-s3.s3.amazonaws.com/images/lexi-about.original.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h3 class="card-title">Thank you!</h3>
+                <p>I look forward to connecting with you! In the meantime, please consider joing <a href="/subscribe/">my mailing list</a>, follow me on <a href="https://www.instagram.com/alexandriathibodeauxcoaching/">instagram</a>, and subsibribe to my <a href="https://thelibraryofalexandria.buzzsprout.com/">podcast</a>.</p>
+                <div class="w-100 d-flex align-items-center justify-content-center">
+                    <div class="follow-icons">
+                        <a href="/subscribe/"><i class="fas fa-envelope"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a>
+                        <a href=""><i class="fas fa-podcast"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/vip-animations.js' %}"></script>
+{% endblock %}

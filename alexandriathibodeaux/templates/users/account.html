@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load wagtailcore_tags wagtailimages_tags widget_tweaks user_tags static %}
+
+{% block title %}{% trans "Your Account" %}{% endblock %}
+
+{% block content %}
+
+<section class="min-height account-page">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Hello{% if request.user.first_name %}, {{ request.user.first_name }}{% endif %}!</h3>
+                        <p>{{ request.user.email }}</p>
+                        <hr class="my-3">
+                        <ul class="nav flex-column account-nav">
+                            <li class="nav-item">
+                                <a class="nav-link p-0 active" href="/account/">Exclusive Content</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="/account/name/">Update Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="{% url 'account_change_password' %}">Change Password</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="{% url 'account_email' %}">Update Email</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="{% url 'account_logout' %}">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {% if request.user|has_group:"Clients - Paid" %} 
+                    <div class="alert alert-success" role="alert">
+                        You have access to exclusive content!
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="content-image">
+                                        <a href="/exclusive/scale-your-biz-workshop">
+                                            <img class="img-fluid rounded" src="{% static 'img/workshop_thumbnail.jpg' %}" alt="">
+                                            <i class="fas fa-play-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    <div class="content-description">
+                                        <a href="/exclusive/scale-your-biz-workshop"><h4>Scale Your Biz Workshop</h4></a>
+                                        <p>Increase your sales & revenue with the implementation of effective communication with your greatest resource: your team!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info" role="alert">
+                        You currently do not have access to any exclusive content.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

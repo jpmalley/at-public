@@ -1,0 +1,18 @@
+{% load wagtailimages_tags %}
+
+<div class="row">
+    <div class="col-md-6">
+        {% image self.image width-600 as image %}
+        <figure class="figure my-3">
+            <img class="figure-img img-fluid rounded" src="{{ image.url }}" alt="{{ image.alt }}">
+            {% if self.image_caption %}
+                <figcaption class="figure-caption">{{ self.image_caption }}</figcaption>
+            {% endif %}
+        </figure>
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+        <div>
+            {{self.content}}
+        </div>
+    </div>
+</div>

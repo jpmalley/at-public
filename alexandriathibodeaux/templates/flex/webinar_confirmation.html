@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+{% load wagtailcore_tags wagtailimages_tags static %} 
+{% block title %} You're in for the Live Workshop! {% endblock title %} 
+{% block extra_css %} 
+{% image self.header_image original as banner %}
+    <style>
+        .vip-bg-image {
+            background-image: url({{ banner.url }});
+        }
+    </style>
+{% endblock %} 
+
+{% block content %}
+<script>
+    fbq('track', 'CompleteRegistration');
+</script>
+
+<section class="confirmation d-flex align-items-center justify-content-center">
+    <div class="card m-4">
+        <img class="card-img-top" src="https://at-heroku-s3.s3.amazonaws.com/images/at-about.original.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h3 class="card-title">Thank you, {{ subscriber.first }}!</h3>
+            <p>I look forward to seeing you on the webinar! You will receive an email with more details shortly. In the meantime, please consider joining <a href="/subscribe/">my mailing list</a> and subscribing to my <a href="https://thelibraryofalexandria.buzzsprout.com/">podcast</a>.</p>
+            <hr class="my-4">
+            <h5 class="text-center">Share this webinar?</h5>
+            <div class="text-center">
+                <ul class="share-buttons">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}&quote={{ self.custom_title|urlencode }}" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-square fa-2x" aria-hidden="true"></i><span class="sr-only">Share on Facebook</span></a>
+                    </li>
+                    <li><a href="https://twitter.com/intent/tweet?source={{ request.build_absolute_uri|urlencode }}&text={{ self.custom_title|urlencode }}:%20{{ request.build_absolute_uri|urlencode }}"
+                            target="_blank" title="Tweet"><i class="fab fa-twitter-square fa-2x" aria-hidden="true"></i><span class="sr-only">Tweet</span></a></li>
+                    <li>
+                        <a href="http://www.tumblr.com/share?v=3&u={{ request.build_absolute_uri|urlencode }}&quote={{ self.custom_title|urlencode }}&s=" target="_blank" title="Post to Tumblr"><i class="fab fa-tumblr-square fa-2x" aria-hidden="true"></i><span class="sr-only">Post to Tumblr</span></a></li>
+                    <li>
+                        <a href="http://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri|urlencode }}&description={{ self.custom_title|urlencode }}" target="_blank" title="Pin it"><i class="fab fa-pinterest-square fa-2x" aria-hidden="true"></i><span class="sr-only">Pin it</span></a>
+                    </li>
+                    <li>
+                        <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri|urlencode }}&title={{ self.custom_title|urlencode }}" target="_blank" title="Submit to Reddit"><i class="fab fa-reddit-square fa-2x" aria-hidden="true"></i><span class="sr-only">Submit to Reddit</span></a></li>
+                    <li>
+                        <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri|urlencode }}&title={{ self.custom_title|urlencode }}&summary=Free%20Live%20Workshop%20-%20December%2013%2C%202021%20at%207pm%20MST&source={{ request.build_absolute_uri|urlencode }}"
+                            target="_blank" title="Share on LinkedIn"><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i><span class="sr-only">Share on LinkedIn</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ request.build_absolute_uri }}" target="_blank" title="Open Link in New Tab"><i class="fas fa-external-link-square-alt fa-2x" aria-hidden="true"></i><span class="sr-only">Open Link in New Tab</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %} {% block extra_js %}
+<script type="text/javascript" src="{% static 'js/vip-animations.js' %}"></script>
+{% endblock %}
