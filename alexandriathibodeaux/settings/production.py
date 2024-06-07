@@ -34,7 +34,7 @@ BASE_URL = "alexandriathibodeaux.com"
 ALLOWED_HOSTS = [
     'alexandriathibodeaux.com',
     'www.alexandriathibodeax.com',
-    'at-website-prod.us-west-1.elasticbeanstalk.com'
+    'at-website-ef8c5d760f75.herokuapp.com'
 ]
 
 private_ip = get_linux_ec2_private_ip()
