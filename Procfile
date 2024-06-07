@@ -1,0 +1,1 @@
+web: gunicorn alexandriathibodeaux.wsgi --log-file -
