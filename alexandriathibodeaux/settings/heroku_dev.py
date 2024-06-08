@@ -17,8 +17,6 @@ COMPRESS_CSS_FILTERS = [
 ]
 
 DATABASES['default'] = dj_database_url.config()
-# DATABASES['default'] = env['DATABASE_URL']
-# DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 CACHES = {
     "default": {
@@ -27,16 +25,37 @@ CACHES = {
     }
 }
 
-SESSION_COOKIE_SECURE = True
+INSTALLED_APPS = INSTALLED_APPS + [
+    'debug_toolbar',
+]
+
+MIDDLEWARE = MIDDLEWARE + [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+if DEBUG is True:
+    class AllIPS(list):
+        def __contains__(self, item):
+            return True
+
+INTERNAL_IPS = AllIPS()
+
+# SESSION_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
 
-PREPEND_WWW = True
-BASE_URL = "www.alexandriathibodeaux.com"
+# PREPEND_WWW = True
+BASE_URL = "dev.alexandriathibodeaux.com"
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'alexandriathibodeaux.com',
+    'www.alexandriathibodeaux.com',
+    'dev.alexandriathibodeaux.com',
+    'dev-alexandriathibodeaux.herokuapp.com',
+    'localhost',
+]
 
 PAYPAL_LIVE_MODE = False
 
