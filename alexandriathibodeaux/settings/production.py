@@ -6,7 +6,17 @@ import os
 env = os.environ.copy()
 SECRET_KEY = env['SECRET_KEY']
 
+# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+INSTALLED_APPS = INSTALLED_APPS + [
+    'debug_toolbar',
+    'wagtail.contrib.styleguide',
+]
+
+MIDDLEWARE = MIDDLEWARE + [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -33,7 +43,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 
-PREPEND_WWW = True
+# PREPEND_WWW = True
 BASE_URL = "www.alexandriathibodeaux.com"
 
 ALLOWED_HOSTS = ['*']
