@@ -27,14 +27,14 @@ INTERNAL_IPS = ("127.0.0.1")
 
 ALLOWED_HOSTS = [
     'dev.alexandriathibodeaux.com',
-    'at-website-dev.us-west-1.elasticbeanstalk.com',
+    'at-website-ef8c5d760f75.herokuapp.com',
     '127.0.0.1',
     'locoalhost',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'https://dev.alexandriathibodeaux.com',
-    'http://at-website-dev.us-west-1.elasticbeanstalk.com',
+    'http://at-website-ef8c5d760f75.herokuapp.com',
     'http://localhost:8080',
     'http://127.0.0.1:8000',
 ]
