@@ -10,21 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 import os
 from pytz import common_timezones
 
-env = os.environ.copy()
-
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'home',
@@ -121,7 +112,6 @@ ACCOUNT_LOGOUT_ON_GET = True
 LOGOUT_REDIRECT_URL = '/account/login/'
 WAGTAIL_FRONTEND_LOGIN_URL = LOGIN_URL
 
-# Other settings
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
 
 MIDDLEWARE = [
@@ -161,10 +151,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'alexandriathibodeaux.wsgi.application'
 
-
 # Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -174,8 +161,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -193,8 +178,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Denver'
@@ -207,8 +190,6 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -218,9 +199,6 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, 'static'),
 ]
 
-# ManifestStaticFilesStorage is recommended in production, to prevent outdated
-# Javascript / CSS assets being served from cache (e.g. after a Wagtail upgrade).
-# See https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -231,42 +209,6 @@ MEDIA_URL = '/media/'
 
 
 # Wagtail settings
-
 WAGTAIL_SITE_NAME = "alexandriathibodeaux"
 
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
-# e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
-# Recaptcha settings
-RECAPTCHA_PUBLIC_KEY = env['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = env['RECAPTCHA_PRIVATE_KEY']
-NOCAPTCHA = True
-
-# S3 settings
-AWS_STORAGE_BUCKET_NAME = env['AWS_STORAGE_BUCKET_NAME']
-AWS_ACCESS_KEY_ID = env['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = env['AWS_SECRET_ACCESS_KEY']
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-# PayPal settings
-PAYPAL_LIVE_CLIENT_ID = env['PAYPAL_LIVE_CLIENT_ID']
-PAYPAL_LIVE_CLIENT_SECRET = env['PAYPAL_LIVE_CLIENT_SECRET']
-PAYPAL_LIVE_URL = 'https://api-m.paypal.com'
-
-PAYPAL_SANDBOX_CLIENT_ID = env['PAYPAL_SANDBOX_CLIENT_ID']
-PAYPAL_SANDBOX_CLIENT_SECRET = env['PAYPAL_SANDBOX_CLIENT_SECRET']
-PAYPAL_SANDBOX_URL = 'https://api-m.sandbox.paypal.com'
-
-PAYPAL_LIVE_MODE = False
-
-if PAYPAL_LIVE_MODE:
-    PAYPAL_CLIENT_ID = PAYPAL_LIVE_CLIENT_ID
-    PAYPAL_CLIENT_SECRET = PAYPAL_LIVE_CLIENT_SECRET
-    PAYPAL_URL = PAYPAL_LIVE_URL
-else:
-    PAYPAL_CLIENT_ID = PAYPAL_SANDBOX_CLIENT_ID
-    PAYPAL_CLIENT_SECRET = PAYPAL_SANDBOX_CLIENT_SECRET
-    PAYPAL_URL = PAYPAL_SANDBOX_URL
