@@ -64,8 +64,3 @@ else:
     PAYPAL_CLIENT_ID = PAYPAL_SANDBOX_CLIENT_ID
     PAYPAL_CLIENT_SECRET = PAYPAL_SANDBOX_CLIENT_SECRET
     PAYPAL_URL = PAYPAL_SANDBOX_URL
-
-try:
-    from .local import *
-except ImportError:
-    pass

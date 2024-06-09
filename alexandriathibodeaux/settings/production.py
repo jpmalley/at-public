@@ -9,15 +9,6 @@ SECRET_KEY = env['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-INSTALLED_APPS = INSTALLED_APPS + [
-    'debug_toolbar',
-    'wagtail.contrib.styleguide',
-]
-
-MIDDLEWARE = MIDDLEWARE + [
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-]
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 COMPRESS_OFFLINE = True
@@ -26,9 +17,8 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 
-DATABASES['default'] = dj_database_url.config()
-# DATABASES['default'] = env['DATABASE_URL']
-# DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+# DATABASES['default'] = dj_database_url.config()
+DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 CACHES = {
     "default": {
@@ -44,9 +34,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 
 # PREPEND_WWW = True
-BASE_URL = "www.alexandriathibodeaux.com"
+# BASE_URL = "www.alexandriathibodeaux.com"
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'at-website-ef8c5d760f75.herokuapp.com',
+    'platform.johnpmalley.com',
+    ]
 
 # Recaptcha settings
 RECAPTCHA_PUBLIC_KEY = env['RECAPTCHA_PUBLIC_KEY']
@@ -92,8 +85,3 @@ else:
 
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-try:
-    from .local import *
-except ImportError:
-    pass
